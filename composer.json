@@ -1,0 +1,15 @@
+{
+  "name":"kbarter/Nitrouz_Studioz",
+  "authors": [
+    {
+      "name":"Kevan Barter",
+      "email":"Kbarter@mail.greenriver.edu"
+    }
+  ],
+  "require":{
+    "bcosca/fatfree-core": "dev-master"
+  },
+  "autoload": {
+    "classmap": ["classes/", "model/" , "validation/"]
+  }
+}
