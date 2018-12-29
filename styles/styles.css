@@ -1,0 +1,32 @@
+#Nstudioz {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.bg-*{
+    color: white;
+}
+
+nav {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.navbar-default .navbar-nav > .active > a:hover{
+    color: red;
+}
+
+#halo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+body {
+    background-color: black;
+}
