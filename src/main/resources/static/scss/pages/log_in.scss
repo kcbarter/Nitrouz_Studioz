@@ -1,0 +1,50 @@
+@import "../abstracts/colors";
+@import "sign_up";
+
+#LogInPage {
+  @extend #SignUpPage;
+}
+
+#exit{
+  @extend #exit;
+}
+
+a #exit{
+  @extend #exit;
+}
+
+#login{
+  @extend #signup;
+}
+
+#login{
+  .logInDivs{
+    @extend .signUpDivs;
+  }
+
+  a{
+    color: $black;
+  }
+
+  a:hover{
+    color: $black;
+  }
+  #email{
+    width: 100%;
+    font-size: 1.5em;
+  }
+  #password{
+    width: 100%;
+    font-size: 1.5em;
+  }
+
+  #button{
+    width: 100%;
+    font-size: 1.5em;
+  }
+
+  #forgotPassword{
+    text-align: left;
+    font-size: 1.5em;
+  }
+}

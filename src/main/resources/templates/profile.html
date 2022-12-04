@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body id="profile_page">
+    <a id="exit" th:href="'/LoggedInUser/members'">X</a>
+    <div id="profile_info">
+        <h1 id="profile_header">Profile Info</h1>
+        <form th:object="${profileEntity}">
+            <div id="profile_form">
+                <img id="profile_pic" th:src="(*{profilePic} != null) ? *{profilePic} : '/images/empty_profile_pic.png'" class="profile_pic" alt="Profile Pic">
+                <label for="profileName">Profile Name:</label>
+                <input id="profileName" class="labels" th:value="${profileEntity.profileName}"/>
+                <label for="name">Name:</label>
+                <input id="name" class="labels" th:value="${(profileEntity.name != null) ? profileEntity.name : 'Enter a Name'}"/>
+                <label for="email">Email:</label>
+                <input id="email" class="labels" th:value="${(profileEntity.email != null) ? profileEntity.email : 'Enter a Email'}" type="email">
+                <label for="about">About:</label>
+                <textarea id="about" class="labels" th:value="${(profileEntity.about != null) ? profileEntity.about : 'Enter about info'}"></textarea>
+                <label for="phone">Phone Number</label>
+                <input id="phone" class="labels" th:value="${(profileEntity.phone != null) ? profileEntity.phone : 'Enter Phone Number'}">
+                <h3>Change password</h3>
+            </div>
+        </form>
+        <button id="edit">Edit</button>
+    </div>
+<script src="/js/profile.js"></script>
+</body>
+</html>

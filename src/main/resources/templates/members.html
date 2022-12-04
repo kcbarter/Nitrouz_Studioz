@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Members</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="members_info">
+<header>
+    <div id="heading">
+        <img src="/images/Nitrouz_Studioz.png" id="Nit_Studioz">
+        <img class="footerImage" src="/images/twitter.png">
+        <img class="footerImage" src="/images/twitch.png">
+        <div id="login_logout">
+            <p th:if="${loggedOut}" id="loginLink"><a href="/signup">Login/Sign Up</a></p>
+            <div th:if="${loggedIn}" id="logoutLink">
+                <p id="profile_name" th:text="${profileEntity.getProfileName()}"></p>
+                <a href="/logOut">Log Out</a>
+            </div>
+        </div>
+    </div>
+    <nav>
+        <ul id="nav">
+            <li class="navbar"><a th:href="${loggedOut} ? '/' : '/LoggedInUser/index'">Home</a></li>
+            <li class="navbar">
+                <div class="dropdown">
+                    <a href="">News</a>
+                    <div class="dropdown_content">
+                        <a href="">Reviews</a>
+                    </div>
+                </div>
+            </li>
+            <li class="navbar"><a href="">ESPORTS</a></li>
+            <li class="navbar">
+                <div class="dropdown">
+                    <a href="">Live Streams</a>
+                    <div class="dropdown_content">
+                        <a href="">Twitch</a>
+                        <a href="">Youtube</a>
+                    </div>
+                </div>
+            </li>
+            <li class="navbar"><a href="">Store</a></li>
+            <li class="navbar">
+                <div class="dropdown">
+                    <a href="">Forums</a>
+                    <div class="dropdown_content active">
+                        <a th:href="${loggedOut} ? '/members' : '/LoggedInUser/members'">Members</a>
+                    </div>
+                </div>
+            </li>
+            <li class="navbar"><a th:href="${loggedOut} ? '/about' : '/LoggedInUser/about'">About</a></li>
+        </ul>
+    </nav>
+</header>
+<h1 th:if="${loggedOut}">Please log in to see Members</h1>
+<div th:if="${loggedIn}" class="grid_container members">
+    <div th:if="${loggedIn}" th:each="profile: ${profiles}" class="grid_item">
+        <a th:if="${profileEntity.getProfileName()} == ${profile.profileName}" th:href="'/LoggedInUser/profile'">
+            <img th:src="${(profile.profilePic != null) ? profile.profilePic : '/images/empty_profile_pic.png'}" class="profile_pic"/>
+        </a>
+        <img th:if="${profileEntity.getProfileName()} != ${profile.profileName}" th:src="${(profile.profilePic != null) ? profile.profilePic : '/images/empty_profile_pic.png'}" class="profile_pic"/>
+        <p th:text="${profile.profileName}"></p>
+        <div th:if="${profileEntity.getProfileName()} != ${profile.profileName}" class="like_follow">
+            <button th:id="'like_unlike' + ${profile.id}" class="like_button" th:classappend="${#lists.contains(liked_profiles, profile)} ? unlike : like" th:attr="onclick=|likeOrUnlikeProfile('${profile.email}', this.id)|">
+                <i class="fa fa-thumbs-o-up" style="font-size:24px"></i>
+            </button>
+
+            <button th:id="'follow_unfollow' + ${profile.id}" class="follow_button" th:classappend="${#lists.contains(followed_profiles, profile)} ? unfollow : follow"
+                th:text="${#lists.contains(followed_profiles, profile)} ? Unfollow : Follow" th:attr="onclick=|followOrUnfollowProfile('${profile.email}', this.id)|">
+            </button>
+        </div>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    if([[${loggedIn}]]){
+        function likeOrUnlikeProfile(email, id){
+            if(document.getElementById(id).classList.contains("like")){
+                fetch("/api/like/" + email)
+                    .then(res => {
+                        if(res.ok){
+                            console.log("Response, " + res);
+                            document.getElementById(id).classList.remove("like");
+                            document.getElementById(id).classList.add("unlike");
+                        }
+                    })
+                    .catch(err => console.log("Error, " + err))
+            }
+
+            if(document.getElementById(id).classList.contains("unlike")){
+                fetch("/api/unlike/" + email)
+                    .then(res => {
+                        if(res.ok){
+                            console.log(res);
+                            document.getElementById(id).classList.remove("unlike");
+                            document.getElementById(id).classList.add("like");
+                        }
+                    })
+                    .catch(err => console.log("Error, " + err))
+            }
+        }
+
+        function followOrUnfollowProfile(email, id){
+            if(document.getElementById(id).classList.contains("follow")){
+                fetch("/api/follow/" + email)
+                    .then(res => {
+                        if(res.ok){
+                            console.log("Response, " + res);
+                            document.getElementById(id).classList.remove("follow");
+                            document.getElementById(id).classList.add("unfollow");
+                            document.getElementById(id).innerHTML = "Unfollow";
+                        }
+                    })
+                    .catch(err => console.log("Error, " + err))
+            }
+
+            if(document.getElementById(id).classList.contains("unfollow")){
+                fetch("/api/unfollow/" + email)
+                    .then(res => {
+                        if(res.ok){
+                            console.log("Response, " + res);
+                            document.getElementById(id).classList.remove("unfollow");
+                            document.getElementById(id).classList.add("follow");
+                            document.getElementById(id).innerHTML = "Follow";
+                        }
+                    })
+                    .catch(err => console.log("Error, " + err))
+            }
+        }
+    }
+</script>
+</body>
+</html>

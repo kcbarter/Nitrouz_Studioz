@@ -1,0 +1,146 @@
+@import '../abstracts/colors';
+
+.pages {
+  background: url("../../images/background.jpg") no-repeat;
+  background-size: cover;
+  margin: 0;
+}
+
+header{
+  text-align: center;
+  background-color: $black;
+  clear: both;
+}
+
+nav{
+  background-color: $darkgrey;
+}
+
+#heading{
+  display: inline-flex;
+  align-items: center;
+  clear: both;
+  background-color: $black;
+}
+
+footer{
+  bottom: 0;
+  margin-left: .5em;
+  width: 80vw;
+  color: $white1;
+  text-align: center;
+  clear: both;
+}
+
+ul {
+  margin-bottom: 0;
+  list-style-type: none;
+  margin-left: 15vw;
+  margin-right: 15vw;
+  padding: 0;
+  overflow: hidden;
+}
+
+.navbar{
+  background-color: $darkgrey;
+}
+
+.dropdown{
+  overflow: hidden;
+}
+
+.dropdown a{
+  font-size: 1em;
+}
+
+.dropdown_content{
+  display: none;
+  position: absolute;
+  background-color: $darkgrey;
+}
+
+.dropdown_content a{
+  float: none;
+  text-decoration: none;
+  display: block;
+  color: aqua;
+  padding-left: .8em;
+  padding-right: .8em;
+  text-align: center;
+}
+
+.dropdown_content a:hover{
+  color: $deeppink
+}
+
+.dropdown:hover .dropdown_content{
+  display: block;
+}
+
+#profile_name{
+  color: $aqua;
+}
+
+#loginLink a, #logoutLink a{
+  color: $white1;
+  float: right;
+  text-decoration: none;
+  padding-left: 1em;
+  font-size: 1em;
+}
+
+#loginLink a:hover, #logoutLink a:hover{
+  color: $deeppink;
+}
+
+#login_logout{
+  padding-left: 2em;
+  margin-right: 5vw;
+}
+
+li+.navbar {border-left: 1px solid $deeppink
+}
+
+nav{
+  text-align: center;
+  clear: both;
+}
+
+li {
+  float: left;
+  font-size: 1em;
+  padding-left: .8em;
+  padding-right: .8em;
+}
+
+li a {
+  display: block;
+  color: $aqua;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: $deeppink;
+  background-color: $aqua;
+}
+
+.active {
+  background-color: $purple;
+  color: $deeppink;
+}
+
+.active a:hover{
+  background-color: $purple !important;
+}
+
+#Nit_Studioz {
+  height: 100px;
+  width: 550px;
+}
+
+.footerImage{
+  height: 40px;
+  width: 40px;
+}

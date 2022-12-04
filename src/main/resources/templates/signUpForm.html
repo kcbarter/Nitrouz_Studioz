@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up Form</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body id="SignUpPage">
+  <a href="/"><h1 id="exit">X</h1></a>
+  <div id="signup">
+    <div class="signUpDivs">
+      <h1>Sign Up</h1>
+      <h3 id="memberQuestion">Already a member? <a href="/login">Log In</a></h3>
+    </div>
+    <aside th:if="${error}">
+      <h2><span th:text="${message}" class="error"></span></h2>
+    </aside>
+    <form method="POST" action="/SignUp" th:object="${profileEntity}">
+      <div class="signUpDivs">
+          <input id="email" th:field="*{email}" placeholder="Email" type="email">
+          <input id="password" th:field="*{password}" placeholder="Password" type="password">
+          <button id="button" type="submit">Sign Up</button>
+      </div>
+      <div id="footer">
+        <input type="checkbox" id="join" name="join" th:checked="${join}">
+        <label for="join">Join this sites community.</label><a role="link" onclick="readMore()" id="readMore"> Read More</a>
+        <p id="info"></p>
+      </div>
+    </form>
+  </div>
+
+  <script src="js/signup.js"></script>
+</body>
+</html>

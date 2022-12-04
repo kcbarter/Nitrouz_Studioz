@@ -1,0 +1,46 @@
+@import '../abstracts/colors';
+
+.about_message{
+  margin-left: 10vw;
+  margin-right: 10vw;
+  width: 80vw;
+  display: flex;
+}
+
+.about_message > div{
+  width: 20vw;
+}
+
+#contact_us{
+  flex-grow: 4;
+  color: $deeppink;
+}
+
+#send_message{
+  flex-grow: 7;
+  margin-top: 2em;
+  color: $white1;
+}
+
+#about{
+  background-color: $purple;
+  color: $aqua;
+  padding: 1em;
+}
+
+#name, #email, #subject {
+  width: 100%;
+  margin-bottom: .5em;
+}
+
+#button{
+  background-color: $black;
+  color: $white;
+  font-size: 1em;
+  padding: .5em;
+  float: right;
+}
+
+#button:hover{
+  color: $purple;
+}

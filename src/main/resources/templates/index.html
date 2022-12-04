@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Nitrouz Studioz Homepage</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="pages">
+<header>
+  <div id="heading">
+    <img src="/images/Nitrouz_Studioz.png" id="Nit_Studioz">
+    <img class="footerImage" src="/images/twitter.png">
+    <img class="footerImage" src="/images/twitch.png">
+    <div id="login_logout">
+      <p th:if="${loggedOut}" id="loginLink"><a href="/signup">Login/Sign Up</a></p>
+      <div th:if="${loggedIn}" id="logoutLink">
+        <p id="profile_name" th:text="${profileEntity.getProfileName()}"></p>
+        <a href="/logOut">Log Out</a>
+      </div>
+    </div>
+  </div>
+  <nav>
+    <ul id="nav">
+      <li class="navbar active"><a th:href="${loggedOut} ? '/' : '/LoggedInUser/index'">Home</a></li>
+      <li class="navbar">
+        <div class="dropdown">
+          <a href="">News</a>
+          <div class="dropdown_content">
+            <a href="">Reviews</a>
+          </div>
+        </div>
+      </li>
+      <li class="navbar"><a href="">ESPORTS</a></li>
+      <li class="navbar">
+        <div class="dropdown">
+          <a href="">Live Streams</a>
+          <div class="dropdown_content">
+            <a href="">Twitch</a>
+            <a href="">Youtube</a>
+          </div>
+        </div>
+      </li>
+      <li class="navbar"><a href="">Store</a></li>
+      <li class="navbar">
+        <div class="dropdown">
+          <a href="">Forums</a>
+          <div class="dropdown_content">
+            <a th:href="${loggedOut} ? '/members' : '/LoggedInUser/members'">Members</a>
+          </div>
+        </div>
+      </li>
+      <li class="navbar"><a th:href="${loggedOut} ? '/about' : '/LoggedInUser/about'">About</a></li>
+    </ul>
+  </nav>
+</header>
+<div id="grid-container">
+  <div class="gridItem1">
+    <img src="/images/Halo_Infinite.jpg" class="image">
+  </div>
+  <div class="gridItem2">
+    <img src="/images/Cyberank.jpg" class="image">
+  </div>
+  <div class="gridItem3">
+    <img src="/images/Gaming.jpg" class="image">
+  </div>
+  <div class="gridItem4">
+    <p>P</p>
+  </div>
+  <div class="gridItem5">
+    <img src="/images/Re_reckoning.gif" class="image">
+  </div>
+  <div class="gridItem6">
+    <iframe id="iframe" width="883" height="415" src="https://www.youtube.com/embed/HV2LVEPrKGs"
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+  <div class="gridItem7">
+    <footer th:replace="fragments/footer.html :: footer"></footer>
+  </div>
+</div>
+
+
+<script src="/js/homepage.js"></script>
+</body>
+</html>
