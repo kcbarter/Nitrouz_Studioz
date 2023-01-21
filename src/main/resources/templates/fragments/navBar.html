@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head th:fragment="head (title)">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Navbar</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<header>
+    <div id="heading">
+        <img src="/images/Nitrouz_Studioz.png" id="Nit_Studioz">
+        <img class="footerImage" src="/images/twitter.png">
+        <img class="footerImage" src="/images/twitch.png">
+        <div id="login_logout">
+            <p th:if="${loggedOut}" id="loginLink"><a href="/signup">Login/Sign Up</a></p>
+            <div th:if="${loggedIn}" id="logoutLink">
+                <p id="profile_name" th:text="${profileEntity.getProfileName()}"></p>
+                <a href="/logOut">Log Out</a>
+            </div>
+        </div>
+    </div>
+    <nav>
+        <ul id="nav">
+            <li th:class="navbar" th:classappend="${homeActive} ? 'active' : ''">
+                <a th:href="${loggedOut} ? '/' : '/LoggedInUser/index'">Home</a></li>
+            <li class="navbar">
+                <div class="dropdown">
+                    <a href="">News</a>
+                    <div class="dropdown_content">
+                        <a href="">Reviews</a>
+                    </div>
+                </div>
+            </li>
+            <li class="navbar"><a href="">ESPORTS</a></li>
+            <li class="navbar">
+                <div class="dropdown">
+                    <a href="">Live Streams</a>
+                    <div class="dropdown_content">
+                        <a href="">Twitch</a>
+                        <a href="">Youtube</a>
+                    </div>
+                </div>
+            </li>
+            <li class="navbar"><a href="">Store</a></li>
+            <li class="navbar">
+                <div class="dropdown">
+                    <a href="">Forums</a>
+                    <div class="dropdown_content" th:classappend="${membersActive} ? 'active' : ''">
+                        <a th:href="${loggedOut} ? '/members' : '/LoggedInUser/members'">Members</a>
+                    </div>
+                </div>
+            </li>
+            <li class="navbar" th:classappend="${aboutActive} ? 'active' : ''">
+                <a th:href="${loggedOut} ? '/about' : '/LoggedInUser/about'">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+</body>
+</html>

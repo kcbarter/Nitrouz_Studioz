@@ -14,6 +14,8 @@ public class MainController {
 
     private boolean loggedOut = true;
     private boolean loggedIn = false;
+    private boolean activeElement = true;
+    private boolean notActive = false;
     private ProfileEntity profileEntity;
     @Autowired
     private ProfileDoa profileDoa;
@@ -22,6 +24,9 @@ public class MainController {
     public String home_page(Model model) {
         model.addAttribute("loggedOut", loggedOut);
         model.addAttribute("loggedIn", loggedIn);
+        model.addAttribute("homeActive", activeElement);
+        model.addAttribute("aboutActive", notActive);
+        model.addAttribute("membersActive", notActive);
         model.addAttribute("profileEntity", "Not logged In");
         return "index";
     }
@@ -30,6 +35,9 @@ public class MainController {
     public String about_page(Model model){
         model.addAttribute("loggedOut", loggedOut);
         model.addAttribute("loggedIn", loggedIn);
+        model.addAttribute("homeActive", notActive);
+        model.addAttribute("aboutActive", activeElement);
+        model.addAttribute("membersActive", notActive);
         model.addAttribute("profileEntity", "Not logged In");
         return "about";
     }
@@ -38,6 +46,9 @@ public class MainController {
     public String members(Model model){
         model.addAttribute("loggedOut", loggedOut);
         model.addAttribute("loggedIn", loggedIn);
+        model.addAttribute("homeActive", notActive);
+        model.addAttribute("aboutActive", notActive);
+        model.addAttribute("membersActive", activeElement);
         model.addAttribute("profileEntities", "Not logged In");
         return "members";
     }
