@@ -25,12 +25,18 @@ public class UserController {
     private boolean loggedIn = true;
     private boolean loggedOut = false;
 
+    private boolean activeElement = true;
+    private boolean notActive = false;
+
     @GetMapping("/success")
     public String logInAttmpt(Model model){
         profileEntity = loggedInUser();
         model.addAttribute("profileEntity", profileEntity);
         model.addAttribute("loggedIn", loggedIn);
         model.addAttribute("loggedOut", loggedOut);
+        model.addAttribute("homeActive", activeElement);
+        model.addAttribute("aboutActive", notActive);
+        model.addAttribute("membersActive", notActive);
         return "index";
     }
 
@@ -40,6 +46,9 @@ public class UserController {
         model.addAttribute("profileEntity", profileEntity);
         model.addAttribute("loggedIn", loggedIn);
         model.addAttribute("loggedOut", loggedOut);
+        model.addAttribute("homeActive", activeElement);
+        model.addAttribute("aboutActive", notActive);
+        model.addAttribute("membersActive", notActive);
         return "index";
     }
 
@@ -49,6 +58,9 @@ public class UserController {
         model.addAttribute("profileEntity", profileEntity);
         model.addAttribute("loggedIn", loggedIn);
         model.addAttribute("loggedOut", loggedOut);
+        model.addAttribute("homeActive", notActive);
+        model.addAttribute("aboutActive", activeElement);
+        model.addAttribute("membersActive", notActive);
         return "about";
     }
 
@@ -65,6 +77,9 @@ public class UserController {
         model.addAttribute("profiles", profiles);
         model.addAttribute("loggedIn", loggedIn);
         model.addAttribute("loggedOut", loggedOut);
+        model.addAttribute("homeActive", notActive);
+        model.addAttribute("aboutActive", notActive);
+        model.addAttribute("membersActive", activeElement);
 
         return "members";
     }
