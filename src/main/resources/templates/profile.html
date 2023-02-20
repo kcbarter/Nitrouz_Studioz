@@ -13,16 +13,15 @@
             <div id="profile_form">
                 <img id="profile_pic" th:src="(*{profilePic} != null) ? *{profilePic} : '/images/empty_profile_pic.png'" class="profile_pic" alt="Profile Pic">
                 <label for="profileName">Profile Name:</label>
-                <input id="profileName" class="labels" th:value="${profileEntity.profileName}"/>
+                <p id="profileName" class="labels" th:text="${profileEntity.profileName}"></p>
                 <label for="name">Name:</label>
-                <input id="name" class="labels" th:value="${(profileEntity.name != null) ? profileEntity.name : 'Enter a Name'}"/>
+                <p id="name" class="labels" th:text="${(profileEntity.name != null) ? profileEntity.name : 'No name added.'}"></p>
                 <label for="email">Email:</label>
-                <input id="email" class="labels" th:value="${(profileEntity.email != null) ? profileEntity.email : 'Enter a Email'}" type="email">
+                <p id="email" class="labels" th:text="${(profileEntity.email != null) ? profileEntity.email : 'No email added'}" type="email"></p>
                 <label for="about">About:</label>
-                <textarea id="about" class="labels" th:value="${(profileEntity.about != null) ? profileEntity.about : 'Enter about info'}"></textarea>
+                <p id="about" class="labels" th:text="${(profileEntity.about != null) ? profileEntity.about : 'No about info added.'}"></p>
                 <label for="phone">Phone Number</label>
-                <input id="phone" class="labels" th:value="${(profileEntity.phone != null) ? profileEntity.phone : 'Enter Phone Number'}">
-                <h3>Change password</h3>
+                <p id="phone" class="labels" th:text="${(profileEntity.phone != null) ? profileEntity.phone : 'No Phone Number added.'}"></p>
             </div>
         </form>
         <button id="edit">Edit</button>
