@@ -1178,6 +1178,8 @@ a #exit {
 #profile_page {
   color: white;
   background-color: black;
+  margin-left: 10vw;
+  margin-right: 10vw;
 }
 
 #profile_form {
@@ -1195,6 +1197,33 @@ label, input {
 
 #profile_pic {
   clear: both;
+  margin: auto;
+}
+
+.profile_labels, #about {
+  background-color: black;
+}
+
+.profile_labels {
+  margin: auto;
+  font-size: 1.4em;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+}
+
+.labels {
+  font-size: 1.3em;
+  color: aqua;
+  margin-bottom: 0.3em;
+}
+
+#edit_form {
+  margin: auto;
+  font-size: 1.2em;
+  padding: 0.4em;
+  max-width: 10vw;
+  background-color: aqua;
+  color: black;
 }
 
 /*# sourceMappingURL=main.css.map */

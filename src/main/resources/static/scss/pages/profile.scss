@@ -29,4 +29,31 @@ label, input{
 #profile_pic{
   @extend .profile_pic;
   clear: both;
+  margin: auto;
+}
+
+.profile_labels, #about{
+  background-color: $black;
+}
+
+.profile_labels {
+  margin: auto;
+  font-size: 1.4em;
+  padding-top: .3em;
+  padding-bottom: .3em;
+}
+
+.labels{
+  font-size: 1.3em;
+  color: $aqua;
+  margin-bottom: .3em;
+}
+
+#edit_form{
+  margin: auto;
+  font-size: 1.2em;
+  padding: .4em;
+  max-width: 10vw;
+  background-color: $aqua;
+  color: $black;
 }
