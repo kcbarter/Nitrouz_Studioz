@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:fragment="head (title)">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Navbar</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <div id="profile_info">
+        <h1 id="profile_header">Profile Info</h1>
+        <div id="profile_form" th:object="${profileEntity}">
+            <img id="profile_pic" th:src="(${profilePic} != null) ? *{profilePic} : '/images/empty_profile_pic.png'" class="profile_pic" alt="Profile Pic">
+            <label class="profile_labels" for="profileName">Profile Name:</label>
+            <p id="profileName" class="labels" th:text="${profileEntity.profileName}"></p>
+            <label class="profile_labels" for="first_name">First Name:</label>
+            <p id="first_name" class="labels" th:text="${(profileEntity.first_name != null) ? profileEntity.first_name : 'No first name added.'}"></p>
+            <label class="profile_labels" for="last_name">Last Name:</label>
+            <p id="last_name" class="labels" th:text="${(profileEntity.last_name != null) ? profileEntity.last_name : 'No last name added.'}"></p>
+            <label class="profile_labels" for="email">Email:</label>
+            <p id="email" class="labels" th:text="${(profileEntity.email != null) ? profileEntity.email : 'No email added'}" type="email"></p>
+            <label class="profile_labels" for="profile_about">About:</label>
+            <p id="profile_about" class="labels" th:text="${(profileEntity.about != null) ? profileEntity.about : 'No about info added.'}"></p>
+            <label class="profile_labels" for="phone">Phone Number</label>
+            <p id="phone" class="labels" th:text="${(profileEntity.phone != null) ? profileEntity.phone : 'No Phone Number added.'}"></p>
+            <button id="edit_form">Edit Profile</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -7,25 +7,7 @@
 </head>
 <body id="profile_page">
     <a id="exit" th:href="'/LoggedInUser/members'">X</a>
-    <div id="profile_info">
-        <h1 id="profile_header">Profile Info</h1>
-        <div id="profile_form" th:object="${profileEntity}">
-            <img id="profile_pic" th:src="(*{profilePic} != null) ? *{profilePic} : '/images/empty_profile_pic.png'" class="profile_pic" alt="Profile Pic">
-            <label class="profile_labels" for="profileName">Profile Name:</label>
-            <p id="profileName" class="labels" th:text="${profileEntity.profileName}"></p>
-            <label class="profile_labels" for="first_name">First Name:</label>
-            <p id="first_name" class="labels" th:text="${(profileEntity.first_name != null) ? profileEntity.first_name : 'No first name added.'}"></p>
-            <label class="profile_labels" for="last_name">Last Name:</label>
-            <p id="last_name" class="labels" th:text="${(profileEntity.last_name != null) ? profileEntity.last_name : 'No last name added.'}"></p>
-            <label class="profile_labels" for="email">Email:</label>
-            <p id="email" class="labels" th:text="${(profileEntity.email != null) ? profileEntity.email : 'No email added'}" type="email"></p>
-            <label class="profile_labels" for="profile_about">About:</label>
-            <p id="profile_about" class="labels" th:text="${(profileEntity.about != null) ? profileEntity.about : 'No about info added.'}"></p>
-            <label class="profile_labels" for="phone">Phone Number</label>
-            <p id="phone" class="labels" th:text="${(profileEntity.phone != null) ? profileEntity.phone : 'No Phone Number added.'}"></p>
-            <button id="edit_form">Edit Profile</button>
-        </div>
-    </div>
+    <div th:replace="fragments/profile_info.html :: div"></div>
 <script src="/js/profile.js"></script>
 </body>
 </html>
