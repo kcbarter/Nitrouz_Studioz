@@ -11,7 +11,7 @@
 <h1 th:if="${loggedOut}">Please log in to see Members</h1>
 <div th:if="${loggedIn}" class="grid_container members">
     <div th:if="${loggedIn}" th:each="profile: ${profiles}" class="grid_item">
-        <a th:if="${profileEntity.getProfileName()} == ${profile.profileName}" th:href="'/LoggedInUser/profile'">
+        <a th:if="${profileEntity.getProfileName()} == ${profile.profileName}" th:href="'/loggedInUser/profile'">
             <img th:src="${(profile.profilePic != null) ? profile.profilePic : '/images/empty_profile_pic.png'}" class="profile_pic"/>
         </a>
         <img th:if="${profileEntity.getProfileName()} != ${profile.profileName}" th:src="${(profile.profilePic != null) ? profile.profilePic : '/images/empty_profile_pic.png'}" class="profile_pic"/>

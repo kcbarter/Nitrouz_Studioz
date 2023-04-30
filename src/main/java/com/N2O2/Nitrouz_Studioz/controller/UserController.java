@@ -8,12 +8,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.List;
 
-@RequestMapping("/LoggedInUser")
+@RequestMapping("/loggedInUser")
 @Controller
 public class UserController {
     @Autowired
@@ -22,11 +25,13 @@ public class UserController {
     MemberService memberService;
 
     private ProfileEntity profileEntity;
-    private boolean loggedIn = true;
-    private boolean loggedOut = false;
+    private final boolean loggedIn = true;
+    private final boolean loggedOut = false;
 
-    private boolean activeElement = true;
-    private boolean notActive = false;
+    private final boolean activeElement = true;
+    private final boolean notActive = false;
+
+    private boolean updateProfile;
 
     @GetMapping("/success")
     public String logInAttmpt(Model model){
@@ -87,9 +92,38 @@ public class UserController {
     @RequestMapping("/profile")
     public String loggedInProfilePage(Model model){
         profileEntity = loggedInUser();
+        updateProfile = false;
         model.addAttribute("profileEntity", profileEntity);
+        model.addAttribute("updateProfile", updateProfile);
 
         return "profile";
+    }
+
+    @RequestMapping("/edit_profile")
+    public String editProfile(Model model){
+        profileEntity = loggedInUser();
+        updateProfile = true;
+        model.addAttribute("profileEntity", profileEntity);
+        model.addAttribute("updateProfile", updateProfile);
+
+        return "profile";
+    }
+
+    @RequestMapping("/updateProfile")
+    public String updateProfile(Model model,
+                                RedirectAttributes redirectAttributes,
+                                @Valid ProfileEntity profileEntity,
+                                BindingResult bindingResult){
+        if(bindingResult.hasErrors() || profileEntity.getFirst_name().isEmpty() || profileEntity.getLast_name().isEmpty()){
+            redirectAttributes.addFlashAttribute("error", "Please make sure all fields are filled out correctly or " +
+                    "no required fields are left blank.");
+            redirectAttributes.addFlashAttribute("profileEntity", profileEntity);
+            return "redirect:/loggedInUser/edit_profile";
+        }
+        profileService.updateProfileInfo(profileEntity);
+        updateProfile = false;
+        redirectAttributes.addFlashAttribute("success", "Profile successfully updated!");
+        return "redirect:/loggedInUser/profile";
     }
 
     private ProfileEntity loggedInUser(){
