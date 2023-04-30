@@ -11,8 +11,7 @@
 <body>
     <div id="profile_info">
 
-        <h1 id="profile_header" th:value="${updateProfile} ? `Update Profile` : `Profile Info`"></h1>
-
+        <h1 id="profile_header" th:text="${updateProfile} ? 'Update Profile' : 'Profile Info'"></h1>
         <div th:if="${!updateProfile}" id="profile_form" th:object="${profileEntity}">
             <img id="profile_pic" th:src="(${profilePic} != null) ? *{profilePic} : '/images/empty_profile_pic.png'" class="profile_pic" alt="Profile Pic">
             <label class="profile_labels" for="profileName">Profile Name:</label>
@@ -32,8 +31,6 @@
 
         <div th:if="${updateProfile}" id="profile_form" th:object="${profileEntity}">
             <form method="POST" action="/loggedInUser/updateProfile">
-                // imgage upload to allow user to upload a profile picture to their profile
-                <input type="file" id="profilePic" name="profilePic" accept="image/*">
                 <label for="profileName">Profile Name *:</label>
                 <input type="text" id="profileName" name="profileName" th:value="${profileEntity.profileName}">
                 <label for="first_name">First Name *:</label>
