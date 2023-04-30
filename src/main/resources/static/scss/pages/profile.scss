@@ -32,8 +32,13 @@ label, input{
   margin: auto;
 }
 
-.profile_labels, #about{
+.profile_labels, #profile_about{
   background-color: $black;
+}
+
+#about {
+  background-color: $white;
+  color: $black;
 }
 
 .profile_labels {

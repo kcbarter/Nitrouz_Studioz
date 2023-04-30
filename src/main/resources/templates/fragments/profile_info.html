@@ -39,10 +39,10 @@
                 <input type="text" id="last_name" name="last_name" th:value="${profileEntity.last_name}">
                 <label for="email">Email *:</label>
                 <input type="email" id="email" name="email" th:value="${profileEntity.email}">
-                <label for="profile_about">About:</label>
-                <input type="text" id="profile_about" name="profile_about" th:value="${profileEntity.about}">
+                <label for="about">About:</label>
+                <input type="text" id="about" name="about" th:value="${profileEntity.about}">
                 <label for="phone">Phone Number:</label>
-                <input type="text" id="phone" name="phone" th:value="${profileEntity.phone}">
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" th:value="${profileEntity.phone}">
                 <button type="submit">Update Profile</button>
             </form>
         </div>

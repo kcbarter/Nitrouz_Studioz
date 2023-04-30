@@ -116,20 +116,28 @@ public class UserController {
                                 @RequestParam(name = "first_name") String first_name,
                                 @RequestParam(name = "last_name") String last_name,
                                 BindingResult bindingResult){
+        System.out.println(profileEntity.getAbout());
         if(first_name.isEmpty() || last_name.isEmpty()){
             redirectAttributes.addFlashAttribute("error", "Please fill out all required fields.");
             redirectAttributes.addFlashAttribute("profileEntity", profileEntity);
             return "redirect:/loggedInUser/edit_profile";
         }
         ProfileEntity currentProfile = loggedInUser();
+        profileEntity.setId(currentProfile.getId());
         profileEntity.setPassword(currentProfile.getPassword());
+        profileEntity.setComments(currentProfile.isComments());
+        profileEntity.setLikes(currentProfile.isLikes());
+        profileEntity.setFollows(currentProfile.isFollows());
+        profileEntity.setEnabled(currentProfile.isEnabled());
+        profileEntity.setGeneral(currentProfile.isGeneral());
+        profileEntity.setRoles(currentProfile.getRoles());
         return performUpdateOfProfile(redirectAttributes, profileEntity, bindingResult);
     }
 
     private String performUpdateOfProfile(RedirectAttributes redirectAttributes,
                                         @Valid ProfileEntity profileEntity,
                                         BindingResult bindingResult){
-        System.out.println(profileEntity.getPassword());
+        System.out.println(profileEntity.getAbout());
         if(bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("error", "Errors in form submission. Please try again.");
             redirectAttributes.addFlashAttribute("profileEntity", profileEntity);
