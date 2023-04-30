@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -110,13 +111,27 @@ public class UserController {
     }
 
     @RequestMapping("/updateProfile")
-    public String updateProfile(Model model,
-                                RedirectAttributes redirectAttributes,
-                                @Valid ProfileEntity profileEntity,
+    public String updateProfile(RedirectAttributes redirectAttributes,
+                                ProfileEntity profileEntity,
+                                @RequestParam(name = "first_name") String first_name,
+                                @RequestParam(name = "last_name") String last_name,
                                 BindingResult bindingResult){
-        if(bindingResult.hasErrors() || profileEntity.getFirst_name().isEmpty() || profileEntity.getLast_name().isEmpty()){
-            redirectAttributes.addFlashAttribute("error", "Please make sure all fields are filled out correctly or " +
-                    "no required fields are left blank.");
+        if(first_name.isEmpty() || last_name.isEmpty()){
+            redirectAttributes.addFlashAttribute("error", "Please fill out all required fields.");
+            redirectAttributes.addFlashAttribute("profileEntity", profileEntity);
+            return "redirect:/loggedInUser/edit_profile";
+        }
+        ProfileEntity currentProfile = loggedInUser();
+        profileEntity.setPassword(currentProfile.getPassword());
+        return performUpdateOfProfile(redirectAttributes, profileEntity, bindingResult);
+    }
+
+    private String performUpdateOfProfile(RedirectAttributes redirectAttributes,
+                                        @Valid ProfileEntity profileEntity,
+                                        BindingResult bindingResult){
+        System.out.println(profileEntity.getPassword());
+        if(bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute("error", "Errors in form submission. Please try again.");
             redirectAttributes.addFlashAttribute("profileEntity", profileEntity);
             return "redirect:/loggedInUser/edit_profile";
         }
