@@ -1209,17 +1209,52 @@ label, input {
   color: black;
 }
 
-.profile_labels {
+#profileNameDiv {
+  display: inline-block;
+}
+
+#firstNameDiv {
+  display: inline-block;
+}
+
+#lastNameDiv {
+  display: inline-block;
+}
+
+#emailDiv {
+  display: inline-block;
+}
+
+#aboutDiv {
+  display: inline-block;
+}
+
+#phoneDiv {
+  display: inline-block;
+}
+
+#profileNameDiv, #firstNameDiv, #lastNameDiv, #emailDiv, #aboutDiv, #phoneDiv {
   margin: auto;
-  font-size: 1.4em;
-  padding-top: 0.3em;
-  padding-bottom: 0.3em;
+  padding: 0.3em;
+  width: 70vw;
+}
+
+.profile_labels, .labels {
+  display: inline-block;
+  font-size: 1.3em;
+  margin-top: 0.3em;
+}
+
+.profile_labels {
+  color: white;
 }
 
 .labels {
-  font-size: 1.3em;
   color: aqua;
-  margin-bottom: 0.3em;
+}
+
+.form-group, input {
+  display: flex;
 }
 
 #edit_form {

@@ -41,17 +41,54 @@ label, input{
   color: $black;
 }
 
-.profile_labels {
-  margin: auto;
-  font-size: 1.4em;
-  padding-top: .3em;
-  padding-bottom: .3em;
+
+#profileNameDiv{
+  display: inline-block;
 }
 
-.labels{
+#firstNameDiv{
+  display: inline-block;
+}
+
+#lastNameDiv{
+  display: inline-block;
+}
+
+#emailDiv{
+  display: inline-block;
+}
+
+#aboutDiv{
+  display: inline-block;
+}
+
+#phoneDiv{
+  display: inline-block;
+}
+
+#profileNameDiv, #firstNameDiv, #lastNameDiv, #emailDiv, #aboutDiv, #phoneDiv{
+  margin: auto;
+  padding: .3em;
+  width: 70vw;
+}
+
+
+.profile_labels, .labels{
+  display: inline-block;
   font-size: 1.3em;
+  margin-top: .3em;
+}
+
+.profile_labels {
+  color: $white;
+}
+
+.labels {
   color: $aqua;
-  margin-bottom: .3em;
+}
+
+.form-group, input {
+  display: flex;
 }
 
 #edit_form{

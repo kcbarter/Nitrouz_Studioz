@@ -13,37 +13,64 @@
 
         <h1 id="profile_header" th:text="${updateProfile} ? 'Update Profile' : 'Profile Info'"></h1>
         <div th:if="${!updateProfile}" id="profile_form" th:object="${profileEntity}">
+            <h1 id="editSuccess" th:if="${editSuccess}" th:text="${editSuccess}"></h1>
             <img id="profile_pic" th:src="(${profilePic} != null) ? *{profilePic} : '/images/empty_profile_pic.png'" class="profile_pic" alt="Profile Pic">
-            <label class="profile_labels" for="profileName">Profile Name:</label>
-            <p id="profileName" class="labels" th:text="${profileEntity.profileName}"></p>
-            <label class="profile_labels" for="first_name">First Name:</label>
-            <p id="first_name" class="labels" th:text="${(profileEntity.first_name != null) ? profileEntity.first_name : 'No first name added.'}"></p>
-            <label class="profile_labels" for="last_name">Last Name:</label>
-            <p id="last_name" class="labels" th:text="${(profileEntity.last_name != null) ? profileEntity.last_name : 'No last name added.'}"></p>
-            <label class="profile_labels" for="email">Email:</label>
-            <p id="email" class="labels" th:text="${(profileEntity.email != null) ? profileEntity.email : 'No email added'}" type="email"></p>
-            <label class="profile_labels" for="profile_about">About:</label>
-            <p id="profile_about" class="labels" th:text="${(profileEntity.about != null) ? profileEntity.about : 'No about info added.'}"></p>
-            <label class="profile_labels" for="phone">Phone Number</label>
-            <p id="phone" class="labels" th:text="${(profileEntity.phone != null) ? profileEntity.phone : 'No Phone Number added.'}"></p>
+            <div id="profileNameDiv">
+                <label class="profile_labels" for="profileName">Profile Name:</label>
+                <p id="profileName" class="labels" th:text="${profileEntity.profileName}"></p>
+            </div>
+            <div id="firstNameDiv">
+                <label class="profile_labels" for="first_name">First Name:</label>
+                <p id="first_name" class="labels" th:text="${(profileEntity.first_name != null) ? profileEntity.first_name : 'No first name added.'}"></p>
+            </div>
+            <div id="lastNameDiv">
+                <label class="profile_labels" for="last_name">Last Name:</label>
+                <p id="last_name" class="labels" th:text="${(profileEntity.last_name != null) ? profileEntity.last_name : 'No last name added.'}"></p>
+            </div>
+            <div id="emailDiv">
+                <label class="profile_labels" for="email">Email:</label>
+                <p id="email" class="labels" th:text="${(profileEntity.email != null) ? profileEntity.email : 'No email added'}" type="email"></p>
+            </div>
+            <div id="aboutDiv">
+                <label class="profile_labels" for="profile_about">About:</label>
+                <p id="profile_about" class="labels" th:text="${(profileEntity.about != null) ? profileEntity.about : 'No about info added.'}"></p>
+            </div>
+            <div id="phoneDiv">
+                <label class="profile_labels" for="phone">Phone Number</label>
+                <p id="phone" class="labels" th:text="${(profileEntity.phone != null) ? profileEntity.phone : 'No Phone Number added.'}"></p>
+            </div>
             <a href="/loggedInUser/edit_profile"><button id="edit_form">Edit Profile</button></a>
         </div>
 
         <div th:if="${updateProfile}" id="profile_form" th:object="${profileEntity}">
+            <h1 id="editError" th:if="${editError}" th:text="${editError}"></h1>
             <form method="POST" action="/loggedInUser/updateProfile">
-                <label for="profileName">Profile Name *:</label>
-                <input type="text" id="profileName" name="profileName" th:value="${profileEntity.profileName}">
-                <label for="first_name">First Name *:</label>
-                <input type="text" id="first_name" name="first_name" th:value="${profileEntity.first_name}">
-                <label for="last_name">Last Name *:</label>
-                <input type="text" id="last_name" name="last_name" th:value="${profileEntity.last_name}">
-                <label for="email">Email *:</label>
-                <input type="email" id="email" name="email" th:value="${profileEntity.email}">
-                <label for="about">About:</label>
-                <input type="text" id="about" name="about" th:value="${profileEntity.about}">
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" th:value="${profileEntity.phone}">
-                <button type="submit">Update Profile</button>
+                <div id="profileNameDiv">
+                    <label for="profileName">Profile Name *:</label>
+                    <span><input type="text" id="profileName" name="profileName" th:value="${profileEntity.profileName}"></span>
+                </div>
+                <div id="firstNameDiv">
+                    <label for="first_name">First Name *:</label>
+                    <span><input type="text" id="first_name" name="first_name" th:value="${profileEntity.first_name}"></span>
+                </div>
+                <div id="lastNameDiv">
+                    <label for="last_name">Last Name *:</label>
+                    <span><input type="text" id="last_name" name="last_name" th:value="${profileEntity.last_name}"></span>
+                </div>
+                <div id="emailDiv">
+                    <label for="email">Email *:</label>
+                    <span><input type="email" id="email" name="email" th:value="${profileEntity.email}"></span>
+                </div>
+                <div id="aboutDiv">
+                    <label for="about">About:</label>
+                    <span><input type="text" id="about" name="about" th:value="${profileEntity.about}"></span>
+                </div>
+                <div id="phoneDiv">
+                    <label for="phone">Phone Number:</label>
+                    <span><input type="tel" id="phone" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" th:value="${profileEntity.phone}"></span>
+                </div>
+                <input type="hidden" id="password" name="password" th:value="${profileEntity.password}">
+                <button type="submit" id="edit_form">Update Profile</button>
             </form>
         </div>
     </div>
