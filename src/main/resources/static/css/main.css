@@ -809,7 +809,7 @@ h1, .members {
   flex-wrap: wrap;
 }
 
-.profile_pic, #profile_pic {
+.profile_pic {
   height: 80px;
   width: 80px;
   border-radius: 50%;
@@ -1035,7 +1035,7 @@ h1, .members {
   flex-wrap: wrap;
 }
 
-.profile_pic, #profile_pic {
+.profile_pic {
   height: 80px;
   width: 80px;
   border-radius: 50%;
@@ -1181,89 +1181,55 @@ a #exit {
   margin-left: 10vw;
   margin-right: 10vw;
 }
-
-#profile_form {
+#profile_page #profile_info {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
-
-label, input {
-  display: inline-block !important;
-}
-
-#profile_header {
+#profile_page #profile_header {
   text-align: center;
+  margin-top: 0;
 }
-
-#profile_pic {
-  clear: both;
-  margin: auto;
+#profile_page .form-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
-
-.profile_labels, #profile_about {
+#profile_page .form-group .profile_labels {
   background-color: black;
+  flex: 0 0 10vw;
+  margin-left: 10vw;
 }
-
-#about {
+#profile_page .form-group .labels,
+#profile_page .form-group .input {
   background-color: white;
   color: black;
+  flex-grow: 1;
+  margin-right: 10vw;
 }
-
-#profileNameDiv {
-  display: inline-block;
-}
-
-#firstNameDiv {
-  display: inline-block;
-}
-
-#lastNameDiv {
-  display: inline-block;
-}
-
-#emailDiv {
-  display: inline-block;
-}
-
-#aboutDiv {
-  display: inline-block;
-}
-
-#phoneDiv {
-  display: inline-block;
-}
-
-#profileNameDiv, #firstNameDiv, #lastNameDiv, #emailDiv, #aboutDiv, #phoneDiv {
-  margin: auto;
-  padding: 0.3em;
-  width: 70vw;
-}
-
-.profile_labels, .labels {
-  display: inline-block;
-  font-size: 1.3em;
-  margin-top: 0.3em;
-}
-
-.profile_labels {
-  color: white;
-}
-
-.labels {
-  color: aqua;
-}
-
-.form-group, input {
-  display: flex;
-}
-
-#edit_form {
-  margin: auto;
+#profile_page #edit_form {
+  margin: 0 auto;
   font-size: 1.2em;
   padding: 0.4em;
   max-width: 10vw;
   background-color: aqua;
   color: black;
+  display: block;
+}
+#profile_page #profile_form {
+  width: 100%;
+  max-width: none;
+}
+#profile_page #profile_pic {
+  margin: 0 auto;
+  display: block;
+}
+#profile_page #email,
+#profile_page .labels,
+#profile_page .input {
+  flex: 1;
+  margin-right: 0;
 }
 
 /*# sourceMappingURL=main.css.map */

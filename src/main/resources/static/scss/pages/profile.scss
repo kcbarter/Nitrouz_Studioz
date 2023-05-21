@@ -2,100 +2,68 @@
 @import "members";
 @import "sign_up";
 
-#profile_page{
+#profile_page {
   color: $white;
   background-color: $black;
   margin-left: 10vw;
   margin-right: 10vw;
-}
 
-#exit{
-  @extend #exit;
-}
+  #profile_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-#profile_form{
-  display: flex;
-  flex-direction: column;
-}
+  #profile_header {
+    text-align: center;
+    margin-top: 0;
+  }
 
-label, input{
-  display: inline-block !important;
-}
+  .form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1.5rem;
 
-#profile_header{
-  text-align: center;
-}
+    .profile_labels {
+      background-color: $black;
+      flex: 0 0 10vw;
+      margin-left: 10vw;
+    }
 
-#profile_pic{
-  @extend .profile_pic;
-  clear: both;
-  margin: auto;
-}
+    .labels,
+    .input {
+      background-color: $white;
+      color: $black;
+      flex-grow: 1;
+      margin-right: 10vw;
+    }
+  }
 
-.profile_labels, #profile_about{
-  background-color: $black;
-}
+  #edit_form {
+    margin: 0 auto;
+    font-size: 1.2em;
+    padding: 0.4em;
+    max-width: 10vw;
+    background-color: $aqua;
+    color: $black;
+    display: block;
+  }
 
-#about {
-  background-color: $white;
-  color: $black;
-}
+  #profile_form {
+    width: 100%;
+    max-width: none;
+  }
 
+  #profile_pic {
+    margin: 0 auto;
+    display: block;
+  }
 
-#profileNameDiv{
-  display: inline-block;
-}
-
-#firstNameDiv{
-  display: inline-block;
-}
-
-#lastNameDiv{
-  display: inline-block;
-}
-
-#emailDiv{
-  display: inline-block;
-}
-
-#aboutDiv{
-  display: inline-block;
-}
-
-#phoneDiv{
-  display: inline-block;
-}
-
-#profileNameDiv, #firstNameDiv, #lastNameDiv, #emailDiv, #aboutDiv, #phoneDiv{
-  margin: auto;
-  padding: .3em;
-  width: 70vw;
-}
-
-
-.profile_labels, .labels{
-  display: inline-block;
-  font-size: 1.3em;
-  margin-top: .3em;
-}
-
-.profile_labels {
-  color: $white;
-}
-
-.labels {
-  color: $aqua;
-}
-
-.form-group, input {
-  display: flex;
-}
-
-#edit_form{
-  margin: auto;
-  font-size: 1.2em;
-  padding: .4em;
-  max-width: 10vw;
-  background-color: $aqua;
-  color: $black;
+  #email,
+  .labels,
+  .input {
+    flex: 1;
+    margin-right: 0;
+  }
 }
