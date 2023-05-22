@@ -12,31 +12,50 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
 
-  #profile_header {
-    text-align: center;
-    margin-top: 0;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 1.5rem;
-
-    .profile_labels {
-      background-color: $black;
-      flex: 0 0 10vw;
-      margin-left: 10vw;
+    #profile_header {
+      text-align: center;
+      margin-top: 0;
     }
 
-    .labels,
-    .input {
-      background-color: $white;
-      color: $black;
-      flex-grow: 1;
-      margin-right: 10vw;
+    .form-group {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 1.5rem;
+
+      .profile_labels {
+        background-color: $black;
+        flex: 0 0 10vw;
+        margin-left: 10vw;
+      }
+
+      .labels,
+      .input {
+        background-color: $white;
+        color: $black;
+        flex-grow: 1;
+        margin-right: 10vw;
+        padding: 0.5em;
+        box-sizing: border-box;
+      }
+
+      .labels {
+        margin-right: 2vw; /* Adjust the margin as desired */
+      }
+
+      #edit_form {
+        margin-left: 10vw; /* Adjust the margin as desired */
+      }
+    }
+
+    #profile_pic {
+      margin: 0 auto;
+      display: block;
+    }
+
+    #edit_form {
+      margin-top: 1.5rem; /* Adjust the margin as desired */
     }
   }
 
@@ -53,11 +72,6 @@
   #profile_form {
     width: 100%;
     max-width: none;
-  }
-
-  #profile_pic {
-    margin: 0 auto;
-    display: block;
   }
 
   #email,
