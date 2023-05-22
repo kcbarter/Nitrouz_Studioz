@@ -1216,6 +1216,13 @@ a #exit {
 #profile_page #profile_info .form-group #edit_form {
   margin-left: 10vw; /* Adjust the margin as desired */
 }
+#profile_page #profile_info #profile_pic_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem; /* Adjust the margin as desired */
+  margin-bottom: 1rem; /* Adjust the margin as desired */
+}
 #profile_page #profile_info #profile_pic {
   margin: 0 auto;
   display: block;

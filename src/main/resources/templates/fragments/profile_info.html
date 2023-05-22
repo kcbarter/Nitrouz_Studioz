@@ -55,6 +55,14 @@
         <h1 id="editError" th:if="${editError}" th:text="${editError}"></h1>
         <form method="POST" action="/loggedInUser/updateProfile">
             <div class="form-group">
+                <div id="profile_pic_container">
+                    <label for="profile_pic_input" id="profile_pic_label">
+                        <img id="profile_pic" th:src="(${profilePic} != null) ? *{profilePic} : '/images/empty_profile_pic.png'" class="profile_pic" alt="Profile Pic">
+                    </label>
+                    <input type="file" id="profile_pic_input" name="profile_pic" style="display: none;">
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="profileName" class="label">Profile Name *:</label>
                 <input type="text" id="profileName" class="input" name="profileName" th:value="${profileEntity.profileName}">
             </div>

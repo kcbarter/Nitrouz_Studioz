@@ -49,6 +49,14 @@
       }
     }
 
+    #profile_pic_container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1rem; /* Adjust the margin as desired */
+      margin-bottom: 1rem; /* Adjust the margin as desired */
+    }
+
     #profile_pic {
       margin: 0 auto;
       display: block;
@@ -81,3 +89,83 @@
     margin-right: 0;
   }
 }
+
+//#profile_page {
+//  color: $white;
+//  background-color: $black;
+//  margin-left: 10vw;
+//  margin-right: 10vw;
+//
+//  #profile_info {
+//    display: flex;
+//    flex-direction: column;
+//    align-items: center;
+//
+//    #profile_header {
+//      text-align: center;
+//      margin-top: 0;
+//    }
+//
+//    .form-group {
+//      display: flex;
+//      flex-direction: row;
+//      align-items: center;
+//      margin-bottom: 1.5rem;
+//
+//      .profile_labels {
+//        background-color: $black;
+//        flex: 0 0 10vw;
+//        margin-left: 10vw;
+//      }
+//
+//      .labels,
+//      .input {
+//        background-color: $white;
+//        color: $black;
+//        flex-grow: 1;
+//        margin-right: 10vw;
+//        padding: 0.5em;
+//        box-sizing: border-box;
+//      }
+//
+//      .labels {
+//        margin-right: 2vw; /* Adjust the margin as desired */
+//      }
+//
+//      #edit_form {
+//        margin-left: 10vw; /* Adjust the margin as desired */
+//      }
+//    }
+//
+//    #profile_pic {
+//      margin: 0 auto;
+//      display: block;
+//    }
+//
+//    #edit_form {
+//      margin-top: 1.5rem; /* Adjust the margin as desired */
+//    }
+//  }
+//
+//  #edit_form {
+//    margin: 0 auto;
+//    font-size: 1.2em;
+//    padding: 0.4em;
+//    max-width: 10vw;
+//    background-color: $aqua;
+//    color: $black;
+//    display: block;
+//  }
+//
+//  #profile_form {
+//    width: 100%;
+//    max-width: none;
+//  }
+//
+//  #email,
+//  .labels,
+//  .input {
+//    flex: 1;
+//    margin-right: 0;
+//  }
+//}
