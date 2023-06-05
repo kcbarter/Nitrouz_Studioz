@@ -36,10 +36,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers( "/", "/about", "/signup", "/signUpForm",
                 "/signUpFormError", "/login", "/logOut", "/ForgotPasswordPage", "/Forgot_Password",
                 "/SignUp", "/registrationComplete", "/members").permitAll()
-            .antMatchers("/LoggedInUser/**").hasAnyAuthority("ADMIN", "USER", "MODERATOR")
+            .antMatchers("/loggedInUser/**").hasAnyAuthority("ADMIN", "USER", "MODERATOR")
             .anyRequest().authenticated().and().csrf().disable().formLogin()
             .loginPage("/login").failureUrl("/login?error=true")
-            .defaultSuccessUrl("/LoggedInUser/success")
+            .defaultSuccessUrl("/loggedInUser/success")
             .usernameParameter("email")
             .passwordParameter("password")
             .and().logout()

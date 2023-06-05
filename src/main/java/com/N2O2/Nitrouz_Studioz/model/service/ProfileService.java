@@ -53,7 +53,9 @@ public class ProfileService {
     }
 
     public void updateProfileInfo(ProfileEntity profileEntity){
-        profileDoa.save(profileEntity);
+        profileDoa.updateProfile(profileEntity.getProfileName(), profileEntity.getFirst_name(),
+                profileEntity.getLast_name(), profileEntity.getEmail(),
+                profileEntity.getAbout(), profileEntity.getPhone(), profileEntity.getId());
     }
 
     public void newVerificationToken(ProfileEntity profileEntity){

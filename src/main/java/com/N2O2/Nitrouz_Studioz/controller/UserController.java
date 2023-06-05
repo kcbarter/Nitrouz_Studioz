@@ -8,12 +8,16 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.List;
 
-@RequestMapping("/LoggedInUser")
+@RequestMapping("/loggedInUser")
 @Controller
 public class UserController {
     @Autowired
@@ -22,11 +26,13 @@ public class UserController {
     MemberService memberService;
 
     private ProfileEntity profileEntity;
-    private boolean loggedIn = true;
-    private boolean loggedOut = false;
+    private final boolean loggedIn = true;
+    private final boolean loggedOut = false;
 
-    private boolean activeElement = true;
-    private boolean notActive = false;
+    private final boolean activeElement = true;
+    private final boolean notActive = false;
+
+    private boolean updateProfile;
 
     @GetMapping("/success")
     public String logInAttmpt(Model model){
@@ -85,11 +91,72 @@ public class UserController {
     }
 
     @RequestMapping("/profile")
-    public String loggedInProfilePage(Model model){
+    public String loggedInProfilePage(Model model,
+                                      RedirectAttributes redirectAttributes){
         profileEntity = loggedInUser();
+        updateProfile = false;
         model.addAttribute("profileEntity", profileEntity);
+        model.addAttribute("updateProfile", updateProfile);
+
+        if(redirectAttributes.asMap().get("editSuccess") != null) {
+            model.addAttribute("editSuccess", model.asMap().get("editSuccess"));
+        }
 
         return "profile";
+    }
+
+    @RequestMapping("/edit_profile")
+    public String editProfile(Model model,
+                              RedirectAttributes redirectAttributes){
+        profileEntity = loggedInUser();
+        updateProfile = true;
+        model.addAttribute("profileEntity", profileEntity);
+        model.addAttribute("updateProfile", updateProfile);
+
+        if(redirectAttributes.asMap().get("editError") != null) {
+            model.addAttribute("editError", model.asMap().get("editError"));
+        }
+
+        return "profile";
+    }
+
+    @RequestMapping("/updateProfile")
+    public String updateProfile(RedirectAttributes redirectAttributes,
+                                @RequestParam(name = "first_name") String first_name,
+                                @RequestParam(name = "last_name") String last_name,
+                                @Valid ProfileEntity profileEntity,
+                                BindingResult bindingResult){
+        ProfileEntity currentProfile = loggedInUser();
+        if(bindingResult.hasErrors()){
+            if(!(profileEntity.getPassword() == null)
+                    && !profileEntity.getPassword().equals(currentProfile.getPassword())){
+                redirectAttributes.addFlashAttribute("editError", "Password's don't match. Error occurred while updating profile.");
+                return "redirect:/loggedInUser/edit_profile";
+            }
+            if(profileEntity.getEmail().isEmpty()){
+                redirectAttributes.addFlashAttribute("editError", "Email can't be blank");
+                return "redirect:/loggedInUser/edit_profile";
+            }
+
+            profileEntity.setPassword(currentProfile.getPassword());
+        }
+
+        if(first_name.isEmpty() || last_name.isEmpty()){
+            redirectAttributes.addFlashAttribute("editError", "Please fill out all required fields.");
+            return "redirect:/loggedInUser/edit_profile";
+        }
+        profileEntity.setId(currentProfile.getId());
+        profileEntity.setComments(currentProfile.isComments());
+        profileEntity.setLikes(currentProfile.isLikes());
+        profileEntity.setFollows(currentProfile.isFollows());
+        profileEntity.setEnabled(currentProfile.isEnabled());
+        profileEntity.setGeneral(currentProfile.isGeneral());
+        profileEntity.setRoles(currentProfile.getRoles());
+
+        profileService.updateProfileInfo(profileEntity);
+        updateProfile = false;
+        redirectAttributes.addFlashAttribute("editSuccess", "Profile successfully updated!");
+        return "redirect:/loggedInUser/profile";
     }
 
     private ProfileEntity loggedInUser(){

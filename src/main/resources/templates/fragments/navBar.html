@@ -6,7 +6,7 @@
     <title>Navbar</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 <header>
@@ -25,7 +25,7 @@
     <nav>
         <ul id="nav">
             <li th:class="navbar" th:classappend="${homeActive} ? 'active' : ''">
-                <a th:href="${loggedOut} ? '/' : '/LoggedInUser/index'">Home</a></li>
+                <a th:href="${loggedOut} ? '/' : '/loggedInUser/index'">Home</a></li>
             <li class="navbar">
                 <div class="dropdown">
                     <a href="">News</a>
@@ -49,12 +49,12 @@
                 <div class="dropdown">
                     <a href="">Forums</a>
                     <div class="dropdown_content" th:classappend="${membersActive} ? 'active' : ''">
-                        <a th:href="${loggedOut} ? '/members' : '/LoggedInUser/members'">Members</a>
+                        <a th:href="${loggedOut} ? '/members' : '/loggedInUser/members'">Members</a>
                     </div>
                 </div>
             </li>
             <li class="navbar" th:classappend="${aboutActive} ? 'active' : ''">
-                <a th:href="${loggedOut} ? '/about' : '/LoggedInUser/about'">About</a>
+                <a th:href="${loggedOut} ? '/about' : '/loggedInUser/about'">About</a>
             </li>
         </ul>
     </nav>
