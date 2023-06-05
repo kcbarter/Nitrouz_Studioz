@@ -1220,8 +1220,7 @@ a #exit {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 1rem; /* Adjust the margin as desired */
-  margin-bottom: 1rem; /* Adjust the margin as desired */
+  margin: auto !important;
 }
 #profile_page #profile_info #profile_pic {
   margin: 0 auto;

@@ -102,8 +102,6 @@ public class UserController {
             model.addAttribute("editSuccess", model.asMap().get("editSuccess"));
         }
 
-        System.out.println(redirectAttributes.asMap().get("editSuccess"));
-
         return "profile";
     }
 
