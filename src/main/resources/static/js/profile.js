@@ -42,3 +42,28 @@ document.getElementById("edit").onclick = function (){
             .catch(err => console.log("Error, " + err))
     }
 };
+
+//when hovering over profile_pic have a light gray overlay
+document.getElementById("profile_pic_container").onmouseover = function () {
+    // when hovering over profile_pic img change the image's overlay color
+    document.getElementById("profile_pic").onmouseover = function () {
+        document.getElementById("profile_pic").style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    }
+
+    // when not hovering over profile_pic img reset the image's background color
+    document.getElementById("profile_pic").onmouseout = function () {
+        document.getElementById("profile_pic").style.backgroundColor = "transparent";
+    }
+}
+
+document.getElementById("profile_pic_container").onmouseover = function () {
+    // when hovering over the profile_pic_overlay, change the image's background color
+    document.getElementById("profile_pic_input").onmouseover = function () {
+        document.getElementById("profile_pic").style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    };
+
+    // when not hovering over the profile_pic_overlay, reset the image's background color
+    document.getElementById("profile_pic_input").onmouseout = function () {
+        document.getElementById("profile_pic").style.backgroundColor = "transparent";
+    };
+};
