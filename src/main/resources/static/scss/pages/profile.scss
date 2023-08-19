@@ -61,6 +61,13 @@
       display: block;
     }
 
+    #profile_pic:hover{
+      cursor: pointer;
+      border-color: $aqua;
+      border-style: solid;
+      border-size: 1px;
+    }
+
     #edit_form {
       margin-top: 1.5rem; /* Adjust the margin as desired */
     }

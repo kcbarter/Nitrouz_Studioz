@@ -42,16 +42,34 @@ document.getElementById("edit").onclick = function (){
             .catch(err => console.log("Error, " + err))
     }
 };
+// upload image excepts a file parameter
+function uploadImage(file){
+    let formData = new FormData();
+    formData.append("image", file);
 
-
-document.getElementById("profile_pic_container").onmouseover = function () {
-    // when hovering over the profile_pic_overlay, change the image's background color
-    document.getElementById("profile_pic_input").onmouseover = function () {
-        document.getElementById("profile_pic").style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-    };
-
-    // when not hovering over the profile_pic_overlay, reset the image's background color
-    document.getElementById("profile_pic_input").onmouseout = function () {
-        document.getElementById("profile_pic").style.backgroundColor = "transparent";
-    };
-};
+    fetch("/api/uploadImage/" + file)
+        .then(res => {
+            if(res.ok){
+                console.log("Response, " + res);
+                alert("Image Uploaded");
+            }
+        })
+        .catch(err => console.log("Error, " + err))
+}
+// function uploadImage(){
+//     let file = document.getElementById("file").files[0];
+//     let formData = new FormData();
+//     formData.append("file", file);
+//
+//     fetch("/api/uploadImage/", {
+//         method: "POST",
+//         body: formData
+//     })
+//         .then(res => {
+//             if(res.ok){
+//                 console.log("Response, " + res);
+//                 alert("Image Uploaded");
+//             }
+//         })
+//         .catch(err => console.log("Error, " + err))
+// }

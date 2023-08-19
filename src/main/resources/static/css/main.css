@@ -1226,6 +1226,12 @@ a #exit {
   margin: 0 auto;
   display: block;
 }
+#profile_page #profile_info #profile_pic:hover {
+  cursor: pointer;
+  border-color: aqua;
+  border-style: solid;
+  border-size: 1px;
+}
 #profile_page #profile_info #edit_form {
   margin-top: 1.5rem; /* Adjust the margin as desired */
 }

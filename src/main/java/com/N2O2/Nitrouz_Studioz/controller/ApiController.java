@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.awt.*;
+
 @RequestMapping("/api")
 @RestController
 public class ApiController {
@@ -57,5 +59,11 @@ public class ApiController {
     private ProfileEntity loggedInUser(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return profileService.findProfileByEmail(auth.getName());
+    }
+
+    @RequestMapping("/uploadImage/{image:.+}")
+    public void uploadImage(@PathVariable Image image){
+        profileEntity = loggedInUser();
+        profileService.uploadImage(profileEntity, image);
     }
 }

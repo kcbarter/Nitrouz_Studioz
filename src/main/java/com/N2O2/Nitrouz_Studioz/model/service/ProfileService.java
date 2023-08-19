@@ -13,6 +13,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.awt.*;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.UUID;
@@ -90,5 +91,9 @@ public class ProfileService {
 
     public VerificationTokenEntity getVerificationToken(String token){
         return verificationTokenDoa.findByToken(token);
+    }
+
+    public void uploadImage(ProfileEntity profileEntity, Image img){
+        profileEntity.setProfileImage(img);
     }
 }
