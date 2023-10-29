@@ -94,6 +94,6 @@ public class ProfileService {
     }
 
     public void uploadImage(ProfileEntity profileEntity, Image img){
-        profileEntity.setProfileImage(img);
+//        profileEntity.setProfileImage(img);
     }
 }

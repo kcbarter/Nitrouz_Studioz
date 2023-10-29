@@ -16,4 +16,5 @@ public class NitrouzStudiozApplication {
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+
 }
